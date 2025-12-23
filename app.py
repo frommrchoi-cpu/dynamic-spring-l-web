@@ -25,7 +25,7 @@ def make_plot_png(s_val: float, b_val: float, target_r2: float) -> bytes:
     betas = np.linspace(model.beta_min, model.beta_max, 400)
 
     # base curves 2 & 5 (if exist)
-    fig = plt.figure()
+    fig = plt.figure(figsize=(5, 3))
     for s_ref in [2.0, 5.0]:
         if float(s_ref) in model.curves:
             y_ref = model.curve_at_existing_s(float(s_ref), betas)
@@ -49,7 +49,7 @@ def make_plot_png(s_val: float, b_val: float, target_r2: float) -> bytes:
     plt.suptitle(f"Regression@S={s_val:g}: deg={reg.degree}, R²={reg.r2:.6f}", y=0.98, fontsize=10)
 
     buf = io.BytesIO()
-    fig.savefig(buf, format="png", dpi=200, bbox_inches="tight")
+    fig.savefig(buf, format="png", dpi=120, bbox_inches="tight")
     plt.close(fig)
     return buf.getvalue()
 
