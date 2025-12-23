@@ -25,7 +25,7 @@ def make_plot_png(s_val: float, b_val: float, target_r2: float) -> bytes:
     betas = np.linspace(model.beta_min, model.beta_max, 400)
 
     # base curves 2 & 5 (if exist)
-    fig = plt.figure(figsize=(10, 6))
+    fig = plt.figure(figsize=(8, 5))
     for s_ref in [2.0, 5.0]:
         if float(s_ref) in model.curves:
             y_ref = model.curve_at_existing_s(float(s_ref), betas)
